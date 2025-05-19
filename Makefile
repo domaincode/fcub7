@@ -34,24 +34,30 @@ SRCS = main.c \
 	execution/utils/map_confg.c \
 	execution/utils/pixel_put.c \
 	execution/basic/line.c \
-	execution/basic/square.c
+	execution/basic/square.c \
+	execution/basic/map.c
 
 
 
 OBJS = $(SRCS:.c=.o)
+MLX_LIBRARY = minilibx-linux/mlx.a
 
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(OBJS) $(LIBFT) $(MLX_LIBRARY)
 	$(CC)   $(CFLAGS) $(OBJS) $(MLXFLAGS) -o $(NAME)
+
+$(MLX_LIBRARY):
+	make -C minilibx-linux
 
 
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $? -o $@
 
 clean:
+	make clean -C minilibx-linux
 	$(RM) $(OBJS)
 
 fclean: clean

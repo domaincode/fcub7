@@ -20,8 +20,8 @@
 # define HEIGHT 800
 # define WIDTH 800
 # define PLAYER_SIZE 8
-# define MAP_SIZE 64
-# define TILE_SIZE 64
+# define MAP_SIZE 32
+# define TILE_SIZE 3000
 # define PI 3.14159265
 # define RES 1
 
@@ -82,6 +82,7 @@ typedef struct s_my_game
 	double		rotation;
 }				t_my_game;
 
+void	map_to_minimap(t_my_game *game, int px, int py);
 void			draw_line(t_my_game *game, int x_end, int y_end, int color);
 void			draw_square(t_img *image, int posx, int posy, int color);
 void			draw_player(t_img *image, int posx, int posy, int color);

@@ -17,6 +17,7 @@ int	draw_to_window(t_my_game *game)
 	game_key_hook_confg(game, game->forward_steps, game->right_steps,
 		game->rotation);
 	check_intersections(game);
+	//map_to_minimap(game, game->player.px, game->player.py);
 	mlx_put_image_to_window(game->co, game->win, game->img, 0, 0);
 	return (0);
 }
@@ -65,7 +66,7 @@ void	ft_execution(t_my_game *game, t_cub *map)
 	ft_copy(game, map);
 	if (cub_init(game))
 		return ;
-	draw_to_window(game);
+	//draw_to_window(game);
 	mlx_key_hook(game->win, game_key_hook_release, game);
 	mlx_hook(game->win, 2, KeyPressMask, game_key_hook_press, game);
 	mlx_loop_hook(game->co, draw_to_window, game);
